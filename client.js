@@ -2,7 +2,7 @@ const dgram = require('dgram');
 const client = dgram.createSocket('udp4');
 
 const PORT = 41234;
-const HOST = '62.171.132.212';
+const HOST = '127.0.0.1';
 const message = Buffer.from('Hello from client');
 
 client.send(message, PORT, HOST, (err) => {
@@ -11,6 +11,6 @@ client.send(message, PORT, HOST, (err) => {
 });
 
 client.on('message', (msg, rinfo) => {
-  console.log(`server replied: ${msg}`);
+  console.log(`server replied: ${msg}`, rinfo);
   client.close();
 });
